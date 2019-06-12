@@ -35,7 +35,7 @@ if (typeof jQuery === 'undefined') {
                 containSpecialChars: {
                     text: gettext("Your input should contain at least minLength special character"),
                     minLength: 1,
-                    regex: new RegExp('([^!,%,&,@,#,$,^,*,?,_,~])', 'g')
+                    regex: new RegExp('([^!%&@#$^*?_~])', 'g')
                 },
                 containLowercase: {
                     text: gettext("Your input should contain at least minLength lower case character"),
