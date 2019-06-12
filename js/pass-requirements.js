@@ -27,7 +27,7 @@ if (typeof jQuery === 'undefined') {
             if (!options) {                   //if no options are passed,
                 options = {};               //create an options object
             }
-            defaults.rules = $.extend({
+            defaults.rules = $.extend(true, {
                 minlength: {
                     text: gettext("be at least minLength characters long"),
                     minLength: 8,
