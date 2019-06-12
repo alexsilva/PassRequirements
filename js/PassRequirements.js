@@ -20,9 +20,9 @@ if (typeof jQuery === 'undefined') {
         };
         
         if(
-            !options ||                     //if no options are passed                                  /*
-            options.defaults == true ||     //if default option is passed with defaults set to true      * Extend options with default ones
-            options.defaults == undefined   //if options are passed but defaults is not passed           */
+            !options ||                     //if no options are passed                                    /*
+            options.defaults === true ||     //if default option is passed with defaults set to true      * Extend options with default ones
+            options.defaults === undefined   //if options are passed but defaults is not passed           */
         ){
             if(!options){                   //if no options are passed, 
                 options = {};               //create an options object
@@ -85,7 +85,7 @@ if (typeof jQuery === 'undefined') {
 
             Object.getOwnPropertyNames(defaults.rules).forEach(function (val, idx, array) {
                 requirementList += (("<li id='" + val + "'>" + defaults.rules[val].text).replace("minLength", defaults.rules[val].minLength));
-            })
+            });
             try{
             $(this).popover({
                 title: 'Password Requirements',
