@@ -89,7 +89,7 @@ if (typeof jQuery === 'undefined') {
                     title: 'Password Requirements',
                     trigger: options.trigger ? options.trigger : 'focus',
                     html: true,
-                    placement: options.popoverPlacement ? options.popoverPlacement : 'bottom',
+                    placement: options.popoverPlacement ? options.popoverPlacement : 'auto bottom',
                     content: 'Your password should:<ul>' + requirementList + '</ul>'
                     //                        '<p>The confirm field is actived only if all criteria are met</p>'
                 });
