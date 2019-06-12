@@ -3,9 +3,9 @@ if (typeof jQuery === 'undefined') {
 }
 
 (function ($) {
-
     $.fn.PassRequirements = function (options) {
-
+        // Provide fake gettext for when it is not available
+        if( typeof gettext !== 'function' ) { gettext = function(text) { return text; }; }
         /*
          * TODO
          * ====
@@ -29,26 +29,26 @@ if (typeof jQuery === 'undefined') {
             }
             defaults.rules = $.extend({
                 minlength: {
-                    text: "be at least minLength characters long",
+                    text: gettext("be at least minLength characters long"),
                     minLength: 8,
                 },
                 containSpecialChars: {
-                    text: "Your input should contain at least minLength special character",
+                    text: gettext("Your input should contain at least minLength special character"),
                     minLength: 1,
                     regex: new RegExp('([^!,%,&,@,#,$,^,*,?,_,~])', 'g')
                 },
                 containLowercase: {
-                    text: "Your input should contain at least minLength lower case character",
+                    text: gettext("Your input should contain at least minLength lower case character"),
                     minLength: 1,
                     regex: new RegExp('[^a-z]', 'g')
                 },
                 containUppercase: {
-                    text: "Your input should contain at least minLength upper case character",
+                    text: gettext("Your input should contain at least minLength upper case character"),
                     minLength: 1,
                     regex: new RegExp('[^A-Z]', 'g')
                 },
                 containNumbers: {
-                    text: "Your input should contain at least minLength number",
+                    text: gettext("Your input should contain at least minLength number"),
                     minLength: 1,
                     regex: new RegExp('[^0-9]', 'g')
                 }
@@ -86,12 +86,11 @@ if (typeof jQuery === 'undefined') {
             });
             try {
                 $(this).popover({
-                    title: 'Password Requirements',
+                    title: gettext('Password Requirements'),
                     trigger: options.trigger ? options.trigger : 'focus',
                     html: true,
                     placement: options.popoverPlacement ? options.popoverPlacement : 'auto bottom',
-                    content: 'Your password should:<ul>' + requirementList + '</ul>'
-                    //                        '<p>The confirm field is actived only if all criteria are met</p>'
+                    content: gettext('Your password should:') + '<ul>' + requirementList + '</ul>'
                 });
             } catch (e) {
                 throw new Error('PassRequirements requires Bootstraps Popover plugin');
